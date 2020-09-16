@@ -1,43 +1,16 @@
 from dearpygui.dearpygui import *
 import os
 
-# def save_callback(sender, data):
-#     prefix = "razer-cli write effect "
+# Global Variable Declaration
+global EffectPrefix
+global function
+global one
+global two
+EffectPrefix = "razer-cli write effect "
 
-
-#     redone = " " + str(get_value("Red 1"))
-#     greenone = " " + str(get_value("Green 1"))
-#     blueone = " " + str(get_value("Blue 1"))
-
-#     one = redone + greenone + blueone
-
-#     redtwo = " " + str(get_value("Red 2"))
-#     greentwo = " " + str(get_value("Green 2"))
-#     bluetwo = " " + str(get_value("Blue 2"))
-
-#     two = redtwo + greentwo + bluetwo
-
-
-#     UsrInput = get_value("Static or wave")
-#     # print(UsrInput)
-#     # UsrInput = str(UsrInput).lower()
-#     # print(UsrInput)
-
-#     if str(UsrInput.lower()) == "static":
-#         function = "static_gradient"
-#     else:
-#         function = "wave_gradient"
-
-# Fullcommand = prefix + function + one + two
-# print(Fullcommand)
-# os.system(Fullcommand)
-# print("Command Run")
 
 def print_me(sender, data):
     print(get_value("Colour 1"))
-
-    UsrInput = get_value("Static or wave")
-    prefix = "razer-cli write effect "
     colour1 = get_value("Colour 1")
     colour2 = get_value("Colour 2")
 
@@ -53,10 +26,10 @@ def print_me(sender, data):
 
     two = redtwo + greentwo + bluetwo
 
-    if str(UsrInput.lower()) == "static":
-        function = "static_gradient"
-    else:
-        function = "wave_gradient"
+    # if str(UsrInput.lower()) == "static":
+    #     function = "static_gradient"
+    # else:
+    #     function = "wave_gradient"
 
     Fullcommand = prefix + function + one + two
     print(Fullcommand)
@@ -64,26 +37,74 @@ def print_me(sender, data):
     print("Command Run")
 
 
-os.system("python -V")
+def StaticPage(sender, data):
+    delete_item("MainWindow", True)    
+    add_color_picker4("Static Colour", width=500, callback=StaticPageBack)
+    add_same_line(spacing=10)
+    # add_button("Save2", callback=print_me)
+    end()
 
-add_input_text("Static or wave")
+def StaticPageBack(sender, data):
+    colour1 = get_value("Static Colour") # Clear Screen
 
-# add_text("First Colours")
-# add_slider_int("Red 1", default_value=0, min_value=0, max_value=255,)
-# add_slider_int("Green 1", default_value=0, min_value=0, max_value=255,)
-# add_slider_int("Blue 1", default_value=0, min_value=0, max_value=255,)
+    redone = " " + str(colour1[0])
+    greenone = " " + str(colour1[1])
+    blueone = " " + str(colour1[2])
 
-# add_text("Second Colours")
-# add_slider_int("Red 2", default_value=0, min_value=0, max_value=255, )
-# add_slider_int("Green 2", default_value=0, min_value=0, max_value=255,)
-# add_slider_int("Blue 2", default_value=0, min_value=0, max_value=255,)
+    one = redOne + greenOne + blueOne
+
+    function = 'static'
+
+    Fullcommand = EffectPrefix + function + one
+    print(Fullcommand)
+    os.system(Fullcommand)
+
+def StaticGradient(sender, data):
+    delete_item("MainWindow", True) # Clear Screen
+    add_color_picker4("Static Colour 1", width=500, callback=StaticGradientBack)
+    add_same_line(spacing=10)
+    add_color_picker4("Static Colour 2", width=500, callback=StaticGradientBack)
+
+def StaticGradientBack(sender, data):
+    colour1 = get_value("Static Colour 1")
+    colour2 = get_value("Static Colour 1")
+
+    redone = " " + str(colour1[0])
+    greenone = " " + str(colour1[1])
+    blueone = " " + str(colour1[2])
+
+    one = redOne + greenOne + blueOne
+
+    redTwo = " " + str(colour1[0])
+    greenTwo = " " + str(colour1[1])
+    blueTwo = " " + str(colour1[2])
+
+    two = redTwo + greenTwo + blueTwo
+
+    function = 'static'
+
+    Fullcommand = EffectPrefix + function + one + two
+    print(Fullcommand)
+    os.system(Fullcommand)
 
 
+# Menubar
+add_menu_bar("Main Menu")
+add_menu("Effects")
+add_menu_item("Static", callback=StaticPage)
+add_menu_item("Static Gradient", callback=StaticGradient)
+add_menu_item("Wave Gradient")
+add_menu_item("Breathing Single")
+end()
 
-add_color_picker4("Colour 1", width=500, callback=print_me)
-add_same_line(spacing=10)
-add_color_picker4("Colour 2", width=500, callback=print_me)
 
-add_button("Save", callback=print_me)
+# add_input_text("Static or wave")
+
+# add_color_picker4("Colour 1", width=500, callback=print_me)
+# add_same_line(spacing=10)
+# add_color_picker4("Colour 2", width=500, callback=print_me)
+
+# add_button("Save", callback=print_me)
+
 
 start_dearpygui()
