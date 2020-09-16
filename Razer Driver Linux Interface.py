@@ -28,11 +28,11 @@ import os
 #     else:
 #         function = "wave_gradient"
 
-    # Fullcommand = prefix + function + one + two
-    # print(Fullcommand)
-    # os.system(Fullcommand)
-    # print("Command Run")
-    
+# Fullcommand = prefix + function + one + two
+# print(Fullcommand)
+# os.system(Fullcommand)
+# print("Command Run")
+
 def print_me(sender, data):
     print(get_value("Colour 1"))
 
@@ -57,13 +57,15 @@ def print_me(sender, data):
         function = "static_gradient"
     else:
         function = "wave_gradient"
-    
+
     Fullcommand = prefix + function + one + two
     print(Fullcommand)
     os.system(Fullcommand)
     print("Command Run")
 
-    
+
+os.system("python -V")
+
 add_input_text("Static or wave")
 
 # add_text("First Colours")
@@ -77,9 +79,8 @@ add_input_text("Static or wave")
 # add_slider_int("Blue 2", default_value=0, min_value=0, max_value=255,)
 
 
-
-add_color_picker4("Colour 1", width=500)
-add_color_picker4("Colour 2", width=500)
+add_color_picker4("Colour 1", width=500, callback="print_me")
+add_color_picker4("Colour 2", width=500, callback="print_me")
 add_button("Save", callback=print_me)
 
 start_dearpygui()
