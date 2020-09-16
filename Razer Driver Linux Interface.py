@@ -79,8 +79,14 @@ add_input_text("Static or wave")
 # add_slider_int("Blue 2", default_value=0, min_value=0, max_value=255,)
 
 
+<<<<<<< HEAD
 add_color_picker4("Colour 1", width=500, callback=print_me)
 add_color_picker4("Colour 2", width=500, callback=print_me)
+=======
+add_color_picker4("Colour 1", width=500, callback="print_me")
+add_same_line(spacing=10)
+add_color_picker4("Colour 2", width=500, callback="print_me")
+>>>>>>> main
 add_button("Save", callback=print_me)
 
 start_dearpygui()
