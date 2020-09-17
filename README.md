@@ -7,3 +7,5 @@ This is a GUI to interface with the Razer Blade driver which can be found [here]
  - Static gradient
  - Wave gradient
  - Breathing Single
+ - Fan control
+ - Power control modes 0, 1 and 2

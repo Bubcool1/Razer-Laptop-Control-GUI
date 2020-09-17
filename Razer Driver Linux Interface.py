@@ -3,10 +3,12 @@ import os
 
 # Global Variable Declaration
 global EffectPrefix
+global AttrPrefix
 global function
 global one
 global two
 EffectPrefix = "razer-cli write effect "
+AttrPrefix = "razer-cli write "
 
 # Screen clearing Function
 def ScreenClear():
@@ -24,6 +26,9 @@ def ScreenClear():
     delete_item("Breathing Colour Picker")
     delete_item("Breathing Colour")
     delete_item("Breathing Speed")
+
+    delete_item("Fan Speed")
+    delete_item("Fan RPM")
 
 
 def print_me(sender, data):
@@ -167,6 +172,30 @@ def BreathingSingleBack(sender, data):
     print(Fullcommand)
     os.system(Fullcommand)
 
+def FanSpeed(sender, data):
+    ScreenClear()
+    add_text("Fan RPM")
+    add_slider_int("Fan Speed", callback=FanSpeedBack, max_value=5000, min_value=0)
+
+def FanSpeedBack(sender, data):
+    RPM = str(get_value("Fan Speed"))
+
+    FullCommand = AttrPrefix + "fan " + RPM
+    print(FullCommand)
+    os.system(FullCommand)
+
+def PowerCntl(sender, data):
+    ScreenClear()
+    add_text("Power Control")
+    add_slider_int("Power Selector", callback=PowerCntlBack, min_value=0, max_value=2)
+
+def PowerCntlBack(sender, data):
+    Select = str(get_value("Power Selector"))
+
+    FullCommand = AttrPrefix + "power " + Select
+    print(FullCommand)
+    os.system(FullCommand)
+
 
 # Menubar
 add_menu_bar("Main Menu")
@@ -176,7 +205,10 @@ add_menu_item("Static Gradient", callback=StaticGradient)
 add_menu_item("Wave Gradient", callback=WaveGradient)
 add_menu_item("Breathing Single", callback=BreathingSingle)
 end()
-
+add_menu("Power")
+add_menu_item("Fan", callback=FanSpeed)
+add_menu_item("Power Control", callback=PowerCntl)
+end()
 
 # add_input_text("Static or wave")
 
