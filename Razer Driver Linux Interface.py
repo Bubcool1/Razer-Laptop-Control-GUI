@@ -30,6 +30,10 @@ def ScreenClear():
     delete_item("Fan Speed")
     delete_item("Fan RPM")
 
+    delete_item("Please note if you want to use power mode 4, you have to do that manually.")
+    delete_item("Power Control Page")
+    delete_item("Power Selector")
+
 
 def print_me(sender, data):
     print(get_value("Colour 1"))
@@ -186,8 +190,9 @@ def FanSpeedBack(sender, data):
 
 def PowerCntl(sender, data):
     ScreenClear()
-    add_text("Power Control")
+    add_text("Power Control Page")
     add_slider_int("Power Selector", callback=PowerCntlBack, min_value=0, max_value=2)
+    add_text("Please note if you want to use power mode 4, you have to do that manually.")
 
 def PowerCntlBack(sender, data):
     Select = str(get_value("Power Selector"))
