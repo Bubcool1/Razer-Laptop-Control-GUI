@@ -19,10 +19,11 @@ def ScreenClear():
 
     delete_item("Wave Gradient Picker")
     delete_item("Wave Colour 1")
-    delete_item("Wave Colour 1")
+    delete_item("Wave Colour 2")
     
     delete_item("Breathing Colour Picker")
     delete_item("Breathing Colour")
+    delete_item("Breathing Speed")
 
 
 def print_me(sender, data):
@@ -146,6 +147,7 @@ def BreathingSingle(sender, data):
 
     add_color_picker4("Breathing Colour", width=500, callback=BreathingSingleBack)
     # add_button("Save2", callback=print_me)
+    add_slider_int("Breathing Speed", width=500, callback=BreathingSingleBack)
     end()
 
 def BreathingSingleBack(sender, data):
@@ -156,10 +158,12 @@ def BreathingSingleBack(sender, data):
     blueOne = " " + str(colour1[2])
 
     one = redOne + greenOne + blueOne
+    
+    name = " " + str(get_value("Breathing Speed"))
 
     function = 'breathing_single'
 
-    Fullcommand = EffectPrefix + function + one
+    Fullcommand = EffectPrefix + function + one + name
     print(Fullcommand)
     os.system(Fullcommand)
 
