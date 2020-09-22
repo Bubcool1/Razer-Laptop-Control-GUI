@@ -201,6 +201,12 @@ def PowerCntlBack(sender, data):
     print(FullCommand)
     os.system(FullCommand)
 
+def PowerModeFour(sender, data):
+    ScreenClear()
+    add_text("Power Mode 4")
+    add_text("Use at own risk!")
+    
+
 
 # Menubar
 add_menu_bar("Main Menu")
