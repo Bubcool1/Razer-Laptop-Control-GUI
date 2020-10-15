@@ -3,10 +3,6 @@ from tkinter.ttk import *
 import os
 import tkcolorpicker 
 
-global color
-
-# master = Tk() 
-
 class MyFirstGUI(tkinter.Toplevel):
     def __init__(self, master):
         self.master = master
@@ -33,23 +29,20 @@ class MyFirstGUI(tkinter.Toplevel):
 
     def static(self):
         color = str(tkcolorpicker.askcolor((0, 0, 0)))
-
         color = color.split(",", 2)
 
         red = color[0]
         red = red.split("((", 1)
         red = red[1]
-        # print(red)
         green = color[1]
         green = green.split(" ", 1)
         green = green[1]
-        # print(green)
         blue = color[2]
         blue = blue.split(")", 1)
         blue = blue[0]
         blue = blue.split(" ", 1)
         blue = blue[1]
-        # print(blue)
+
         os.system('clear && razer-cli write effect ' + "static" + ' ' + red + ' ' + green + ' ' + blue)
 
     def breathingSingle(self):
@@ -58,23 +51,19 @@ class MyFirstGUI(tkinter.Toplevel):
         global color
 
         color = str(tkcolorpicker.askcolor((0, 0, 0), breathingSingleWindow))
-
         color = color.split(",", 2)
 
         red = color[0]
         red = red.split("((", 1)
         red = red[1]
-        # print(red)
         green = color[1]
         green = green.split(" ", 1)
         green = green[1]
-        # print(green)
         blue = color[2]
         blue = blue.split(")", 1)
         blue = blue[0]
         blue = blue.split(" ", 1)
         blue = blue[1]
-        # print(blue)
         color = ' ' + red + ' ' + green + ' ' + blue + ' '
 
         self.timeSlider1 = tkinter.Scale(breathingSingleWindow, from_=0, to=200, orient=tkinter.HORIZONTAL)
@@ -97,37 +86,30 @@ class MyFirstGUI(tkinter.Toplevel):
         red = color1[0]
         red = red.split("((", 1)
         red = red[1]
-        # print(red)
         green = color1[1]
         green = green.split(" ", 1)
         green = green[1]
-        # print(green)
         blue = color1[2]
         blue = blue.split(")", 1)
         blue = blue[0]
         blue = blue.split(" ", 1)
         blue = blue[1]
-        # print(blue)
         color1 = ' ' + red + ' ' + green + ' ' + blue + ' '
 
         color2 = str(tkcolorpicker.askcolor((0, 0, 0), title=("Wave Gradient Colour 2")))
-
         color2 = color2.split(",", 2)
 
         red = color2[0]
         red = red.split("((", 1)
         red = red[1]
-        # print(red)
         green = color2[1]
         green = green.split(" ", 1)
         green = green[1]
-        # print(green)
         blue = color2[2]
         blue = blue.split(")", 1)
         blue = blue[0]
         blue = blue.split(" ", 1)
         blue = blue[1]
-        # print(blue)
         color2 = red + ' ' + green + ' ' + blue
 
         os.system('razer-cli write effect ' + "wave_gradient" + color1 + color2)
