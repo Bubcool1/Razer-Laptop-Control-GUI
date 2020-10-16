@@ -75,10 +75,10 @@ class MyFirstGUI(tkinter.Toplevel):
         self.timeSlider1 = tkinter.Scale(breathingSingleWindow, from_=0, to=200, orient=tkinter.HORIZONTAL)
         self.timeSlider1.pack()
 
-        self.static_button = tkinter.Button(breathingSingleWindow, text="Submit", command=self.breathingBack)
+        self.static_button = tkinter.Button(breathingSingleWindow, text="Submit", command=self.breathingBack, padx=37, pady=10)
         self.static_button.pack()
 
-        self.close_button = tkinter.Button(breathingSingleWindow, text="Quit All", command=breathingSingleWindow.quit, background='#C50A0B', foreground='white')
+        self.close_button = tkinter.Button(breathingSingleWindow, text="Quit All", command=breathingSingleWindow.quit, background='#C50A0B', foreground='white', padx=38, pady=10)
         self.close_button.pack()
 
     def breathingBack(self):
@@ -165,14 +165,15 @@ class MyFirstGUI(tkinter.Toplevel):
     def fanSpeed(self):
         fanSpeedWindow = tkinter.Toplevel(root)
         fanSpeedWindow.title("Fan Speed")
+        fanSpeedWindow.geometry("180x150")
 
         self.speedSlider1 = tkinter.Scale(fanSpeedWindow, from_=0, to=5000, orient=tkinter.HORIZONTAL)
         self.speedSlider1.pack()
 
-        self.static_button = tkinter.Button(fanSpeedWindow, text="Submit", command=self.fanSpeedBack)
+        self.static_button = tkinter.Button(fanSpeedWindow, text="Submit", command=self.fanSpeedBack, padx=38, pady=10)
         self.static_button.pack()
 
-        self.close_button = tkinter.Button(fanSpeedWindow, text="Quit All", command=fanSpeedWindow.quit, background='#C50A0B', foreground='white')
+        self.close_button = tkinter.Button(fanSpeedWindow, text="Quit All", command=fanSpeedWindow.quit, background='#C50A0B', foreground='white', padx=37, pady=10)
         self.close_button.pack()
 
     def fanSpeedBack(self):
@@ -182,15 +183,16 @@ class MyFirstGUI(tkinter.Toplevel):
     
     def powerMode(self):
         powerModeWindow = tkinter.Toplevel(root)
-        powerModeWindow.title("Fan Speed")
+        powerModeWindow.title("Power Mode")
+        powerModeWindow.geometry("180x150")
 
         self.modeSlider1 = tkinter.Scale(powerModeWindow, from_=0, to=3, orient=tkinter.HORIZONTAL)
         self.modeSlider1.pack()
 
-        self.static_button = tkinter.Button(powerModeWindow, text="Submit", command=self.powerModeBack)
+        self.static_button = tkinter.Button(powerModeWindow, text="Submit", command=self.powerModeBack, padx=38, pady=10)
         self.static_button.pack()
 
-        self.close_button = tkinter.Button(powerModeWindow, text="Quit All", command=powerModeWindow.quit, background='#C50A0B', foreground='white')
+        self.close_button = tkinter.Button(powerModeWindow, text="Quit All", command=powerModeWindow.quit, background='#C50A0B', foreground='white', padx=37, pady=10)
         self.close_button.pack()
 
     def powerModeBack(self):
