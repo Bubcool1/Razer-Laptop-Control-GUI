@@ -53,7 +53,8 @@ class MyFirstGUI(tkinter.Toplevel):
 
     def breathingSingle(self):
         breathingSingleWindow = tkinter.Toplevel(root)
-        breathingSingleWindow.title("Breathing Single")
+        breathingSingleWindow.title("Breathing")
+        breathingSingleWindow.geometry("180x125")
         global color
 
         color = str(tkcolorpicker.askcolor((0, 0, 0), breathingSingleWindow))
@@ -165,7 +166,7 @@ class MyFirstGUI(tkinter.Toplevel):
     def fanSpeed(self):
         fanSpeedWindow = tkinter.Toplevel(root)
         fanSpeedWindow.title("Fan Speed")
-        fanSpeedWindow.geometry("180x150")
+        fanSpeedWindow.geometry("180x125")
 
         self.speedSlider1 = tkinter.Scale(fanSpeedWindow, from_=0, to=5000, orient=tkinter.HORIZONTAL)
         self.speedSlider1.pack()
@@ -184,7 +185,7 @@ class MyFirstGUI(tkinter.Toplevel):
     def powerMode(self):
         powerModeWindow = tkinter.Toplevel(root)
         powerModeWindow.title("Power Mode")
-        powerModeWindow.geometry("180x150")
+        powerModeWindow.geometry("180x125")
 
         self.modeSlider1 = tkinter.Scale(powerModeWindow, from_=0, to=3, orient=tkinter.HORIZONTAL)
         self.modeSlider1.pack()
